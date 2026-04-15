@@ -9,40 +9,35 @@
                justify-content: center; font-family: 'Segoe UI', cursive; text-align: center; overflow: hidden; }
         
         .container { background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 25px; 
-                     box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 10; max-width: 85%; transition: 0.5s; }
+                     box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 10; max-width: 85%; }
         
-        h1 { color: #d63384; font-size: 2.2em; margin-bottom: 10px; }
-        p { color: #555; font-size: 1.2em; line-height: 1.5; margin-bottom: 20px; }
-        
-        /* Gaya untuk Foto (Disembunyikan dulu) */
-        .foto-selva { display: none; width: 150px; height: 150px; border-radius: 50%; border: 5px solid white; 
-                      box-shadow: 0 5px 15px rgba(0,0,0,0.2); object-fit: cover; margin: 0 auto 20px auto; 
-                      animation: munculFoto 1s ease-out; }
-        @keyframes munculFoto { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
+        /* Gaya Foto */
+        .foto { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #fff; 
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin-bottom: 15px; object-fit: cover; }
 
-        .btn { padding: 15px 30px; border: none; border-radius: 50px; 
+        h1 { color: #d63384; font-size: 2em; margin-bottom: 10px; }
+        p { color: #555; font-size: 1.2em; line-height: 1.5; }
+        
+        .btn { margin-top: 20px; padding: 15px 30px; border: none; border-radius: 50px; 
                background: #ff4757; color: white; font-weight: bold; cursor: pointer; 
-               transition: 0.4s; font-size: 1.1em; z-index: 20; position: relative; }
-        .btn:hover { background: #ff6b81; transform: scale(1.1); box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4); }
+               transition: 0.4s; font-size: 1.1em; }
+        .btn:hover { background: #ff6b81; transform: scale(1.1); }
 
-        /* Animasi Bintang */
-        .star { position: absolute; color: gold; font-size: 15px; animation: twinkle 1s infinite alternate; pointer-events: none; }
+        .star { position: absolute; color: gold; font-size: 15px; animation: twinkle 1s infinite alternate; }
         @keyframes twinkle { 0% { opacity: 0.3; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.2); } }
     </style>
 </head>
 <body>
 
-    <div class="container" id="kontenutama">
-        <img src="selva.jpg" alt="Selva Cantik" class="foto-selva" id="foto">
+    <div class="container">
+        <img src="selva.jpg" class="foto" alt="Selva">
         
-        <h1 id="judul">Hai Selva Sayanggg! ✨</h1>
-        <p id="teks">Apapun yang lagi kamu kerjain sekarang, aku bangga banget sama kamu. Jangan lupa istirahat yaaa!!!, kamu hebat banget bisa sampai di titik ini. Semangat terusss sayanggg, kalo ada apa-apa ceritaa udah adaa akuu sekarangg. ❤️</p>
-        
-        <button class="btn" id="tombol" onclick="slidePenutup()">Klik Untuk Semangat!</button>
+        <h1>Hai Selva Sayanggg! ✨</h1>
+        <p id="teks">Apapun yang lagi kamu kerjain sekarang, aku bangga banget sama kamu. Jangan lupa istirahat ya!!!, kamu hebat banget bisa sampai di titik ini. Semangat teruss yaa, kalo ada apa-apa cerita yaa ada aku disini sekaranggg. ❤️</p>
+        <button class="btn" onclick="beriSemangat()">Klik Untuk Semangat!</button>
     </div>
 
     <script>
-        // Membuat Bintang
         function buatBintang() {
             const star = document.createElement('div');
             star.className = 'star';
@@ -54,30 +49,9 @@
         }
         setInterval(buatBintang, 300);
 
-        // Fungsi Slide Penutup (Munculkan Foto & Ganti Teks)
-        function slidePenutup() {
-            const judul = document.getElementById('judul');
-            const teks = document.getElementById('teks');
-            const foto = document.getElementById('foto');
-            const tombol = document.getElementById('tombol');
-            const container = document.getElementById('kontenutama');
-
-            // 1. Tampilkan Foto dengan animasi
-            foto.style.display = 'block';
-
-            // 2. Ganti Teks Penutup
-            judul.innerHTML = "Terima Kasih, Sayanggg! 🥰";
-            teks.innerHTML = "Makasih ya udah jadi orang yang paling spesial di hidupku sampai sekarang. Jangan pernah bosan sama aku, ya? i love youu, Sayanggg! ❤️";
-
-            // 3. Ubah Tombol
-            tombol.innerHTML = "💖 Sayang Selvaa 💖";
-            tombol.onclick = null; // Matikan fungsi klik
-            tombol.style.background = "#d63384";
-            tombol.style.cursor = 'default';
-
-            // 4. Efek Background Meriah
+        function beriSemangat() {
+            document.getElementById('teks').innerHTML = "Kamu cantikk, imutt, lucuuu, gumushh pulaa ! 🌟 jangan nyerah ya, semua capek nya bakall kebayarr semuaa, Semangaattt!!! I love you, Sayanggg! ❤️";
             document.body.style.background = "linear-gradient(45deg, #f093fb 0%, #f5576c 100%)";
-            container.style.boxShadow = "0 15px 40px rgba(214, 51, 132, 0.4)";
         }
     </script>
 </body>
